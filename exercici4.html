@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taules Anidades</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .checkmark {
+            font-size: 24px;
+            color: green;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Taula amb dos números de telèfon -->
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Telephone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Bill Gates</td>
+            <td>
+                555 77 854<br>
+                555 77 855
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Segona Taula amb dos números de telèfon en files separades -->
+<table>
+    <tbody>
+        <tr>
+            <td>First Name:</td>
+            <td>Bill Gates</td>
+        </tr>
+        <tr>
+            <td>Telephone:</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>555 77 854</td>
+                    </tr>
+                    <tr>
+                        <td>555 77 855</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Tercera Taula: combinació de taules amb marques de verificació -->
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>First</td>
+                    </tr>
+                    <tr>
+                        <td>Second</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Row</td>
+                    </tr>
+                    <tr>
+                        <td>Row</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="checkmark">&#10003;</td>
+            <td class="checkmark">&#10003;</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

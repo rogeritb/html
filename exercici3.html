@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CREATE TABLE Examples</title>
+  <style>
+    body {
+      background-color: green;
+      color: white;
+      font-family: monospace;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: lightgreen;
+    }
+
+    pre {
+      background-color: darkgreen;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    <h2>Llista imbricada:</h2>
+    <ul>
+        <li>Coffee</li>
+        <li>Tea
+            <ul>
+                <li>Black tea</li>
+                <li>Green tea
+                    <ul>
+                        <li>China</li>
+                        <li>Africa</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Milk</li>
+    </ul>
+
+    <div class="description">
+        <p>Coffee - black hot drink</p>
+        <p>Milk - white cold drink</p>
+    </div>
+
+    <h2>Llista numerada:</h2>
+    <ol>
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+
+    <h2>Llista amb lletres majúscules:</h2>
+    <ol type="A">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+
+    <h2>Llista amb lletres minúscules:</h2>
+    <ol type="a">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+
+    <h2>Llista amb nombres romans:</h2>
+    <ol type="I">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+
+    <h2>Llista amb nombres romans minúsculs:</h2>
+    <ol type="i">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+
+    <p>Enllaç per enviar emails a una adreça determinada: <a href="mailto:roger.domingo.7e7@itb.cat">Enviar email</a></p>
+</body>
+<body>
+
+  <h1>CREATE TABLE Examples</h1>
+
+  <h2>Basic CREATE TABLE statement</h2>
+  <pre>
+CREATE TABLE stats (
+  id INT,
+  name VARCHAR(255),
+  score INT
+);
+  </pre>
+
+  <h2>The CREATE TABLE statement</h2>
+  <p>The CREATE TABLE statement is used to create a new table in a database.</p>
+
+  <p>Syntax:</p>
+
+  <pre>
+CREATE TABLE table_name (
+  column1 datatype,
+  column2 datatype,
+  ...
+);
+  </pre>
+
+  <h3>Creating a table with a particular storage engine</h3>
+  <p>MyISAM provides a number of differences with InnoDB. The notable and most notable difference is that InnoDB supports the use of transactions and row-level locking, while MyISAM supports only table-level locking.</p>
+  <pre>
+CREATE TABLE stats (
+  id INT,
+  name VARCHAR(255),
+  score INT
+) ENGINE=MyISAM;
+  </pre>
+
+  <h3>Creating a table with auto increment</h3>
+  <p>This can be useful to automatically assign unique identifiers to each new row.</p>
+  <pre>
+CREATE TABLE stats (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  score INT
+);
+  </pre>
+
+  <h3>Creating a table with the current timestamp</h3>
+  <p>You can use the NOW() function to insert the current timestamp into a new row. The NOW() function returns the current date and time. The data type for the timestamp column should be TIMESTAMP.</p>
+  <pre>
+CREATE TABLE stats (
+  id INT AUTO_INCREMENT
