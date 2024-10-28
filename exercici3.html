@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Exercici 3</title>
+  <title>CREATE TABLE Examples</title>
   <style>
     body {
       background-color: green;
@@ -86,53 +86,57 @@
     <p>Enllaç per enviar emails a una adreça determinada: <a href="mailto:roger.domingo.7e7@itb.cat">Enviar email</a></p>
 </body>
 <body>
+    <h1>CREATE TABLE examples</h1>
+    <ul>
+        <li><a href="#basic">Basic CREATE TABLE statement</a></li>
+        <li><a href="#storage-engine">Creating a table with a particular storage engine</a></li>
+        <li><a href="#auto-increment">Creating a table with auto_increment</a></li>
+        <li><a href="#timestamp">Creating a table with a timestamp</a></li>
+        <li><a href="#view-table">Viewing a table definition</a></li>
+    </ul>
 
-  <h1>CREATE TABLE Examples</h1>
-
-  <h2>Basic CREATE TABLE statement</h2>
-  <pre>
-CREATE TABLE stats (
-  id INT,
-  name VARCHAR(255),
-  score INT
+    <h2 id="basic">Basic CREATE TABLE statement</h2>
+    <p>A very basic <code>CREATE TABLE</code> statement which should work in any SQL database:</p>
+    <pre>
+mysql> CREATE TABLE example1 (
+    id INT,
+    data VARCHAR(100)
 );
-  </pre>
+Query OK, 0 rows affected (0.03 sec)
+    </pre>
 
-  <h2>The CREATE TABLE statement</h2>
-  <p>The CREATE TABLE statement is used to create a new table in a database.</p>
+    <h2 id="storage-engine">Creating a table with a particular storage engine</h2>
+    <p>MySQL provides a variety of different table types with differing levels of functionality. The usual default, and most widely used, is <code>MyISAM</code>. Other storage types must be explicitly defined:</p>
+    <pre>
+mysql> CREATE TABLE example_innodb (
+    id INT,
+    data VARCHAR(100)
+) TYPE=InnoDB;
+Query OK, 0 rows affected (0.03 sec)
+    </pre>
+    <p>Note that beginning with MySQL 4.1 <code>ENGINE=InnoDB</code> is the preferred method of defining the storage type.</p>
+    <p>Use <code>SHOW CREATE TABLE</code> (see <a href="#view-table">below</a>) to check that MySQL has created the table as you defined it.</p>
 
-  <p>Syntax:</p>
-
-  <pre>
-CREATE TABLE table_name (
-  column1 datatype,
-  column2 datatype,
-  ...
+    <h2 id="auto-increment">Creating a table with auto_increment</h2>
+    <p>Often you'll want to be able to automatically assign a sequential value to a column:</p>
+    <pre>
+mysql> CREATE TABLE example_autoincrement (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    data VARCHAR(100)
 );
-  </pre>
+Query OK, 0 rows affected (0.01 sec)
 
-  <h3>Creating a table with a particular storage engine</h3>
-  <p>MyISAM provides a number of differences with InnoDB. The notable and most notable difference is that InnoDB supports the use of transactions and row-level locking, while MyISAM supports only table-level locking.</p>
-  <pre>
-CREATE TABLE stats (
-  id INT,
-  name VARCHAR(255),
-  score INT
-) ENGINE=MyISAM;
-  </pre>
+mysql> INSERT INTO example_autoincrement (data)
+    -> VALUES ('Hello world!');
+Query OK, 1 row affected (0.01 sec)
 
-  <h3>Creating a table with auto increment</h3>
-  <p>This can be useful to automatically assign unique identifiers to each new row.</p>
-  <pre>
-CREATE TABLE stats (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255),
-  score INT
-);
-  </pre>
-
-  <h3>Creating a table with the current timestamp</h3>
-  <p>You can use the NOW() function to insert the current timestamp into a new row. The NOW() function returns the current date and time. The data type for the timestamp column should be TIMESTAMP.</p>
-  <pre>
-CREATE TABLE stats (
-  id INT AUTO_INCREMENT
+mysql> SELECT * FROM example_autoincrement;
++----+-------------+
+| id | data        |
++----+-------------+
+|  1 | Hello world |
++----+-------------+
+1 row in set (0.01 sec)
+    </pre>
+</body>
+</html>
